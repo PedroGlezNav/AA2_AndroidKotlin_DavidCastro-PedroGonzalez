@@ -17,30 +17,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.apuntesclasecdi.ui.theme.ApuntesClaseCDITheme
 
-enum class Colors(val color: Color, val tranlationKey: String){
-    Red(Color.Red, "Color_Key_Red"),
-    Green(Color.Green,"Color_Key_Green"),
-    Blue(Color.Blue,"Color_Key_Blue"),
+open class Fruit(val name: String = "Antifruta"){
 
-    /*fun GetColor() : Color {
-        when(this){
-            Red -> Color.Red
-            Green -> Color.Green
-            Blue -> Color.Blue
-        }
 
-        return Color.Black;
-    }*/
 }
+class Apple(): Fruit("Manzana"){
+    fun Applefunc(){
 
-enum class Operations(val operation: (Int, Int) -> Int, val priority: Int){
-    Add({a,b -> a + b}, 0),
-    Subtract({a,b -> a - b}, 0);
-
-    fun Calculate(a: Int, b: Int): Int {
-        return this.operation(a,b)
     }
 }
+
+class Banan(): Fruit("Baanan"){
+    fun Babanfunc(){
+
+    }
+}
+
 
 
 class MainActivity : ComponentActivity() {
@@ -51,15 +43,33 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Column(){
-                        var color = Colors.Green
-                        color.color
 
-                        PrintScreen(color.tranlationKey, color = color.color)
+                        val fruits = listOf(Banan(), Apple(), null)
 
-                        val operation = Operations.Add
-                        val result = operation.Calculate(1, 2)
+                        fruits.forEach{fruit ->
+                            when(fruit){
+                                is Banan -> {
+                                    fruit.Babanfunc()
+                                }
 
-                        PrintScreen(name = result.toString())
+                                is Apple -> {
+                                    fruit.Applefunc()
+                                }
+
+                                else -> {
+                                    PrintScreen(name = "WTF chat, rarete")
+                                }
+                            }
+                        }
+
+                        val weekDay = "Lunes (Putada)"
+
+                        when(weekDay){
+                            "Lunes(Putada)" -> "Es martes"
+                            "Martes" -> "AAAAAA"
+                        }
+
+
                     }
 
 
