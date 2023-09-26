@@ -2,6 +2,8 @@ package com.example.apuntesclasecdi
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -17,75 +19,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.apuntesclasecdi.ui.theme.ApuntesClaseCDITheme
 
-open class Fruit(val name: String = "Antifruta"){
-
-
-}
-class Apple(): Fruit("Manzana"){
-    fun Applefunc(){
-
-    }
-}
-
-class Banan(): Fruit("Baanan"){
-    fun Babanfunc(){
-
-    }
-}
-
-
-
 class MainActivity : ComponentActivity() {
+
+    val startText: TextView by lazy {findViewById(R.id.start_screen_text)}
+    val button : Button by lazy {findViewById(R.id.start_screen_button)}
+
+    var counter = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ApuntesClaseCDITheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Column(){
-
-                        val fruits = listOf(Banan(), Apple(), null)
-
-                        fruits.forEach{fruit ->
-                            when(fruit){
-                                is Banan -> {
-                                    fruit.Babanfunc()
-                                }
-
-                                is Apple -> {
-                                    fruit.Applefunc()
-                                }
-
-                                else -> {
-                                    PrintScreen(name = "WTF chat, rarete")
-                                }
-                            }
-                        }
-
-                        val weekDay = "Lunes (Putada)"
-
-                        when(weekDay){
-                            "Lunes(Putada)" -> "Es martes"
-                            "Martes" -> "AAAAAA"
-                        }
+        setContentView(R.layout.start_screen)
 
 
-                    }
-
-
-                }
-            }
+        button.setOnClickListener{
+            counter++
+            startText.text = "I HAVE " + counter.toString() + " BANANS"
         }
     }
-}
-
-@Composable
-fun PrintScreen(name: String, modifier: Modifier = Modifier, color: Color? = null) {
-
-    Text(
-        text = "Hello ${name.uppercase()}",
-        modifier = modifier,
-        color = color ?: Color.Black
-    )
-
 }
