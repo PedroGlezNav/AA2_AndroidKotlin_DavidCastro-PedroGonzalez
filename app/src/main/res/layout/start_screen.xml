@@ -5,14 +5,7 @@
     android:orientation="vertical"
     >
 
-    <TextView
-        android:id="@+id/start_screen_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MMMMMMM, VANANN"
-        >
 
-    </TextView>
 
     <Button
         android:id="@+id/start_screen_button"
@@ -22,5 +15,56 @@
         >
 
     </Button>
+
+    <EditText
+        android:id="@+id/start_screen_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="300dp"
+        android:hint="¿Banan?"
+        >
+
+    </EditText>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_background"
+        >
+
+    </ImageView>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Switch>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="400dp"
+        android:minWidth="400dp"
+        >
+
+        <TextView
+            android:id="@+id/first_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MMMMMMM, VANANN"
+            >
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/second_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WHERE IS BANNAM"
+            android:layout_toEndOf="@id/first_text"
+            android:layout_margin="100dp"
+            >
+
+        </TextView>
+
+    </RelativeLayout>
 
 </LinearLayout>
