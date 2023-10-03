@@ -18,25 +18,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.widget.doBeforeTextChanged
+import com.example.apuntesclase.R
 import com.example.apuntesclasecdi.ui.theme.ApuntesClaseCDITheme
 
 class MainActivity : ComponentActivity() {
-
-    val startText: TextView by lazy {findViewById(R.id.first_text)}
-    val button : Button by lazy {findViewById(R.id.start_screen_button)}
-    val editText : Button by lazy {findViewById(R.id.start_screen_edit_text)}
 
     var counter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.start_screen)
-
-
-        button.setOnClickListener{
-            counter++
-            startText.text = "I HAVE " + counter.toString() + " BANANS"
-        }
 
     }
 }
