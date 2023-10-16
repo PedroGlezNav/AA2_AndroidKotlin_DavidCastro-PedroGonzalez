@@ -1,5 +1,6 @@
 package com.example.apuntesclasecdi
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -21,99 +22,33 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.widget.doBeforeTextChanged
 import com.example.apuntesclasecdi.ui.theme.ApuntesClaseCDITheme
+import com.example.apuntesclasecdi.utilBannan.SharedBannan
+import com.example.apuntesclasecdi.utilBannan.banan
 
 class MainActivity : ComponentActivity() {
 
-    class ButtonGrid;
-
-    enum class Operation(private val operation: (a: Int, b: Int) -> Int, char: Char){
-        Add({a,b -> a + b}, " + "),
-        Sub({a,b -> a - b}," - ")),
-        Mul({a,b -> a * b," * ")),
-        Div({a,b -> a / b}," / "));
-
-        public fun Operate(a: Int, b: Int) : Int{
-            return this.operation(a,b)
-        }
-    }
-
-    var A:Int? = null
-    var B:Int? = null
-    var Op:Operation? = null
-
-    val result : TextView by lazy {findViewById(R.id.number)}
-    val btncontainer : LinearLayout by lazy {findViewById(R.id.btncontainer)}
-
-    fun OperationPress(op: Operation){
-        if(A != null && B != null){
-            Op = op
-            result.text = A.toString() + op?.toString()
-        }
-    }
+    val openTimesAppText by lazy { findViewById<TextView>(R.id.open_app_times_text)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.start_screen)
+        /*
+        val shared = this.getSharedPreferences("MySharedPreferencesStorage", Context.MODE_PRIVATE)
 
-        val buttonGrid = ButtonGrid(this, btncontainer)
+        //base de datos mal, para apps pequeñas ok
+        var timesOpenApp = shared.getInt("AppOpenTimes", 0)
 
-        var names: MutableList<MutableList<String>> = mutableListOf()
-        names.add(mutableListOf("AC", "()", "%", "/"))
-        names.add(mutableListOf("7", "8", "9", "x"))
-        names.add(mutableListOf("4", "5", "6", "-"))
-        names.add(mutableListOf("1", "2", "3", "+"))
-        names.add(mutableListOf("0", ",", "<-", "="))
+        timesOpenApp++
 
-        for(y in names.indices){
-            var row = buttonGrid.AddNewRow()
+        openTimesAppText.text = timesOpenApp.toString()
 
-            for(x in names[y].indices){
-                val bt = row.AddNewButton(names[y][x])
+        val editor = shared.edit()
 
-                bt.setOnClickListener{
-                    when(names[y][x]){
-                        "AC" ->{
-                            A = null
-                            B = null
-                            Op = null
-                            result.text ="Sad monke"
-                        }
-                        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" ->{
-                            if(Op == null){
-                                A?.let { a ->
-                                    A = (a * 10) + names[y][x].toInt()
-                                }?: run{
-                                    A = names[y][x].toInt()
-                                }
-                            }else{
-                                B?.let { b ->
-                                    B = (b * 10) + names[y][x].toInt()
-                                }?: run{
-                                    B = names[y][x].toInt()
-                                }
-                            }
-                        }
-                        "+"->{
-                            OperationPress(Operation.Add)
-                        }
-                        "-"->{
-                            OperationPress(Operation.Sub)
-                        }
-                        "*"->{
-                            OperationPress(Operation.Mul)
-                        }
-                        "/"->{
-                            OperationPress(Operation.Div)
-                        }
-                        "="->{
+        editor.putInt("AppOpenTimes", timesOpenApp)
+        editor.apply()*/
 
-                        }
-                    }
-                }
-            }
-        }
-
-
+        banan.TimesOpenApp--
+        openTimesAppText.text = banan.TimesOpenApp.toString()
 
     }
 }
