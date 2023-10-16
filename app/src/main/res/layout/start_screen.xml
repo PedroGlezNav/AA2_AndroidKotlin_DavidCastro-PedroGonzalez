@@ -5,25 +5,11 @@
     android:orientation = "vertical"
     >
 
-
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/change_screen_bt"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No babnaN?"
-        android:textSize= "@dimen/Text_Size_aid"
-        android:textAlignment="viewEnd"
-        android:padding="@dimen/padding_normal"
-        android:id="@+id/open_app_times_text"
+        android:text="@string/next_screen_bt"
         />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/grey"
-        android:orientation = "vertical"
-        android:id="@+id/btncontainer"
-        />
-
-
 
 </LinearLayout>
