@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -22,23 +23,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.widget.doBeforeTextChanged
+import com.example.apuntesclase.R
 import com.example.apuntesclasecdi.ui.theme.ApuntesClaseCDITheme
-import com.example.apuntesclasecdi.utilBannan.SharedBannan
-import com.example.apuntesclasecdi.utilBannan.banan
 
 class MainActivity : ComponentActivity() {
 
-    val changeScreenBt by lazy{ findViewById<Button>(R.id.change_screen_bt)}
+    val testBt by lazy{ findViewById<Button>(R.id.test_bt)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.start_screen)
 
-        changeScreenBt.setOnClickListener{
-            val newIntent = Intent(this, MainActivity2::class.java)
+        testBt.setOnClickListener{
+            val tosta = Toast(this)
+            tosta.setText("Tosta with bansabnsa")
+            tosta.duration = Toast.LENGTH_SHORT
 
-            //se pone el this porque somos tontos y nos han dado por culo
-            this.startActivity(newIntent)
+            tosta.show()
         }
-
-}}
+    }
+}
