@@ -23,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.widget.doBeforeTextChanged
-import com.example.apuntesclase.R
 import com.example.apuntesclasecdi.ui.theme.ApuntesClaseCDITheme
 
 class MainActivity : ComponentActivity() {
