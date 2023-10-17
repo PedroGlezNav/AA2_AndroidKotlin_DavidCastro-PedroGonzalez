@@ -26,63 +26,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.widget.doBeforeTextChanged
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.apuntesclasecdi.heroes.HeroAdapter
+import com.example.apuntesclasecdi.heroes.HeroData
+import com.example.apuntesclasecdi.heroes.HeroRepository
 import com.example.apuntesclasecdi.ui.theme.ApuntesClaseCDITheme
 
 class MainActivity : ComponentActivity() {
 
-    val testBt by lazy{ findViewById<Button>(R.id.test_bt)}
+    val table by lazy{ findViewById<RecyclerView>(R.id.my_heros)}
+
+    val heroRepository = HeroRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.start_screen)
 
-        testBt.setOnClickListener{
-            val b = AlertDialog.Builder(this)
+        table.layoutManager = LinearLayoutManager(this)
 
-            b.setTitle("Seras mi angulo, o mi villaino?")
-            //b.setMessage("HA, broma !")
 
-            b.setPositiveButton("Hay que matar a esas criaturas negras!"){ dialog, which ->
-                dialog.dismiss()
-            }
 
-            b.setNegativeButton("DAMN, NOT HERE"){ dialog, which ->
-                dialog.dismiss()
-            }
+        table.adapter = HeroAdapter(heroRepository.GetAllHeroes())
 
-            b.setNeutralButton("No tengo opiniones a favor ni en contra de nada"){dialog , which ->
-                dialog.dismiss()
-            }
-
-            val options = arrayOf("Azul", "7", "Zapato", "Panes Fehacientes")
-            val selectedItems = booleanArrayOf(false, false, false, false)
-
-            b.setMultiChoiceItems(options, selectedItems){dialog, which, isChecked ->
-                selectedItems[which] = isChecked
-            }
-
-            b.setOnCancelListener{
-                val toast = Toast(this)
-                toast.setText("ITS NO USE")
-                toast.show()
-            }
-
-            val linear = LinearLayout(this)
-            linear.orientation = LinearLayout.VERTICAL
-
-            val input = EditText(this)
-            input.hint = "Incluye aqui tu badfic de wolfurra"
-
-            val input2 = EditText(this)
-            input2.hint = "Escribe el numero de bugs del sonic 06"
-
-            linear.addView(input)
-            linear.addView(input2)
-
-            b.setView(linear)
-
-            val dialog = b.create()
-            dialog.show()
-        }
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_normal"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text ="Hero Name"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_title"
+        android:id="@+id/hero_title"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text ="Hero Description"
+        android:textSize="@dimen/text_regular"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:id="@+id/hero_desc"
+        />
+
+</LinearLayout>
