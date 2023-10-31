@@ -1,6 +1,8 @@
 package com.example.apuntesclasecdi.heroes
 
-data class HeroData(val name: String, val description: String)
+import java.io.Serializable
+
+data class HeroData(val name: String, val description: String) : Serializable
 
 
 

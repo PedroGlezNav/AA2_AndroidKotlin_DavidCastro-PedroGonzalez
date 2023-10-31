@@ -24,10 +24,16 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.start_screen)
 
         table.layoutManager = LinearLayoutManager(this)
-
         //val repository = HeroSharedDatabase()
+        //val repository = HeroesAPIService()
+
         val repository = HeroesAPIService()
 
+        table.adapter = HeroAdapter(repository)
+
+
+
+/*
         val provider = HeroProvider(repository)
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -38,6 +44,6 @@ class MainActivity : ComponentActivity() {
             }
 
         }
-
+*/
     }
 }
